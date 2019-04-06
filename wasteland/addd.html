@@ -169,7 +169,7 @@
 					txns.push(bcatTxn);
 
 					let dTxn = new bsv.Transaction()
-						.from(utxos[i])
+						.from(utxos[++i])
 						.addData([
 							'19iG3WTYSsbyos3uJ733yK4zEioi1FesNu',
 							file.name,
@@ -203,14 +203,20 @@
 						}, Promise.resolve())
 						.catch(console.error)
 						.then(() => {
-							dUrl =address + '/' + file.name;
+							dUrl = address + '/' + file.name;
 							document.getElementById('txid').innerHTML =
-							'<a href="https://bico.media/' + dUrl + '" target="_blank"> D://' + dUrl + '</a><br>'+
-								'B://' + bcatTxn.hash ;
+								'<a href="https://bico.media/' +
+								dUrl +
+								'" target="_blank"> D://' +
+								dUrl +
+								'</a><br>' +
+								'B://' +
+								bcatTxn.hash;
 							initialize();
 						});
 
-					console.log(bcatTxn.hash);
+					console.log('bcat:', bcatTxn.hash);
+					console.log('d:', dTxn.hash);
 				};
 
 				reader.readAsArrayBuffer(file);
@@ -255,7 +261,7 @@
 
 	<body onload="initialize()">
 		<h1>Dynamic files on the blockchain</h1>
-    <i>Propegation not working in this version</i>
+
 		<hr />
 
 		<div id="qrcode"></div>
