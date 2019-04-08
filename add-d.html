@@ -65,16 +65,16 @@
 
 						splitCount = Math.min(Math.floor((balance - 50000) / splitValue), 500);
 						document.getElementById('confirmedChunk').innerText = chunkUtxos.filter(
-							(utxo) => utxo.height
+							(utxo) => 0<utxo.height
 						).length;
 						document.getElementById('unconfirmedChunk').innerText = chunkUtxos.filter(
-							(utxo) => !utxo.height
+							(utxo) => !0<utxo.height
 						).length;
 						document.getElementById('confirmed').innerText = spendUtxos.filter(
-							(utxo) => utxo.height
+							(utxo) => 0<utxo.height
 						).length;
 						document.getElementById('unconfirmed').innerText = spendUtxos.filter(
-							(utxo) => !utxo.height
+							(utxo) => !0<utxo.height
 						).length;
 						document.getElementById('balance').innerText =
 							(
@@ -156,7 +156,7 @@
 						.from(utxos[i])
 						.addData([
 							'15DHFxWZJT58f9nhyGnsRBqrgwK4W6h4Up',
-							'bottle upload',
+							'Dynamic upload',
 							file.type,
 							bsv.deps.Buffer.from('20', 'hex'),
 							file.name,
@@ -171,10 +171,10 @@
 					let dTxn = new bsv.Transaction()
 						.from(utxos[++i])
 						.addData([
-							'19iG3WTYSsbyos3uJ733yK4zEioi1FesNu',
+							'19iG3WTYSsbyos3uJ733yK4zEioi1FesNU',
 							file.name,
 							'' + bcatTxn.hash,
-							't',
+							'b',
 							'' + +new Date(),
 						])
 						.change(address)
